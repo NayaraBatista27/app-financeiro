@@ -9,6 +9,15 @@ dist/
 web-build/
 expo-env.d.ts
 
+# Arquivos de ambiente e segredos
+.env
+.env.*
+!.env.example
+
+# Sistema operacional e editor
+.DS_Store
+Thumbs.db
+
 # Native
 .kotlin/
 *.orig.*
@@ -17,6 +26,7 @@ expo-env.d.ts
 *.p12
 *.key
 *.mobileprovision
+*.keystore
 
 # Metro
 .metro-health-check*
@@ -39,3 +49,6 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+
+.claude/settings.json
