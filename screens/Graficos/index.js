@@ -95,9 +95,9 @@ export default function Graficos() {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.titulo}>Gráficos</Text>
+      
       <ScrollView>
-        <Text style={styles.titulo}>Gráficos</Text>
-
         <View style={styles.cartao}>
           <Text style={styles.subtitulo}>Despesas por mês</Text>
           <Text style={styles.total}>
@@ -143,9 +143,7 @@ export default function Graficos() {
 
         <SeletorMesInicio mes={mes} ano={ano} voltarMes={voltarMes} avancarMes={avancarMes} />
 
-        
-
-        <View style={[styles.cartao, { marginTop: 18 }]}>
+        <View style={styles.cartao}>
           <Text style={styles.subtitulo}>Entradas × Despesas</Text>
           <Text style={styles.descricao}>Comparativo dos últimos seis meses</Text>
 
@@ -163,7 +161,7 @@ export default function Graficos() {
                       </Text>
 
                       <View style={[styles.barra,
-                        {height: (item.entradas / maiorValor) * 180, backgroundColor:colors.verdeLimao,},]}
+                        {height: (item.entradas / maiorValor) * 170, backgroundColor:colors.verdeLimao,},]}
                       />
                     </View>
 
@@ -174,7 +172,7 @@ export default function Graficos() {
                       </Text>
 
                       <View style={[styles.barra,
-                        {height: (item.despesas / maiorValor) * 180,backgroundColor: colors.laranja,},]}
+                        {height: (item.despesas / maiorValor) * 170,backgroundColor: colors.laranja,},]}
                       />
                     </View>
 
@@ -188,12 +186,12 @@ export default function Graficos() {
           <View style={styles.legenda}>
             <View style={styles.itemLegenda}>
               <View style={[styles.corLegenda, { backgroundColor: colors.verdeLimao }]} />
-              <Text style={styles.descricao}>Entradas</Text>
+              <Text style={styles.legendaTexto}>Entradas</Text>
             </View>
 
             <View style={styles.itemLegenda}>
               <View style={[styles.corLegenda, { backgroundColor: colors.laranja }]} />
-              <Text style={styles.descricao}>Despesas</Text>
+              <Text style={styles.legendaTexto}>Despesas</Text>
             </View>
           </View>
         </View>
@@ -209,6 +207,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.fundo,
     paddingHorizontal: 16,
     paddingTop: 30,
+    paddingBottom: 8,
   },
   titulo: {
     fontSize: 28,
@@ -220,7 +219,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.card,
     padding: 16,
     borderRadius: 16,
-    marginTop: 16,
   },
   subtitulo: {
     fontSize: 18,
@@ -246,23 +244,33 @@ const styles = StyleSheet.create({
   },
   margin: {
     marginTop: 20,
+    
     },
   legenda: {
     flexDirection: "row",
     justifyContent: "center",
     gap: 24,
     marginTop: 12,
+
+  },
+  legendaTexto: {
+    color: colors.textoSecundario,
   },
   itemLegenda: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     gap: 6,
+
+    paddingVertical: 5,
+
   },
   corLegenda: {
     width: 12,
     height: 12,
     borderRadius: 2,
+
+
   },
   graficoBarras: {
     height: 205,
@@ -272,38 +280,52 @@ const styles = StyleSheet.create({
     marginTop: 30,
     paddingBottom: 8,
     paddingHorizontal: 4,
+    //backgroundColor: '#a2cbe4',
+
   },
   grupoBarras: {
-    flex: 1,
+    //flex: 1,
     alignItems: "center",
     justifyContent: "flex-end",
+    //backgroundColor: '#eef3f8',
+
   },
   barras: {
     height: 150,
     flexDirection: "row",
     alignItems: "flex-end",
     justifyContent: "center",
-    gap: 3,
+    //gap: 3,
+    //backgroundColor: '#00ffb7',
+    //width: 22,
   },
   barra: {
-    width: 14,
+    width: 20,
     minHeight: 2,
     borderTopLeftRadius: 3,
     borderTopRightRadius: 3,
+    backgroundColor: '#ffea00',
+
   },
   mesBarra: {
-    fontSize: 13,
+    fontSize: 15,
+    fontWeight: 'bold',
     color: colors.textoSecundario,
     marginTop: 6,
+
+
   },
   colunaComValor: {
     alignItems: "center",
     justifyContent: "flex-end",
+    //backgroundColor: '#ff001e',
+
   },
   valorBarra: {
     fontSize: 12,
     color: colors.texto,
     marginBottom: 10,
+
   },
 });
 

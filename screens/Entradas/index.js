@@ -114,13 +114,16 @@ export default function Entradas() {
           )
         );
       } else {
+        const novaEntrada = {
+          ...dadosEntrada, dataCadastro: new Date().toISOString(),
+        };
         // Criar a entrada no Firestore e obter o ID
-        const novoId = await salvarEntradaNoFirestore(dadosEntrada);
+        const novoId = await salvarEntradaNoFirestore(novaEntrada);
 
         // Adicionar à lista local com o ID correto
         setEntradas((entradasAtuais) => [
           ...entradasAtuais,
-          { ...dadosEntrada, id: novoId },
+          { ...novaEntrada, id: novoId },
         ]);
       }
 
@@ -142,13 +145,26 @@ export default function Entradas() {
   }
 
   function renderEntrada( {item} ){
+    const dataCadastro = item.dataCadastro ? new Date(item.dataCadastro) : null;
+    const dataFormatada = dataCadastro && !isNaN(dataCadastro.getTime()) ? dataCadastro.toLocaleDateString("pt-BR") : null;
+
     return (
       <Pressable
         style={styles.itemEntrada}
         onLongPress={() => abrirMenuEntrada(item)}
         delayLongPress={500}
       >
-        <Text style={styles.descricao}>{item.descricao}</Text>
+        <View style={styles.infoEntrada}>
+          <Text style={styles.descricao}>
+            {item.descricao}
+          </Text>
+
+          {dataFormatada && (
+            <Text style={styles.dataCadastro}>
+              Cadastrada em {dataFormatada}
+            </Text>
+          )}
+        </View>
 
         <Text style={styles.valor}>
           {Number(item.valor).toLocaleString("pt-BR", {
@@ -262,7 +278,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   descricao: {
-    flex: 1,
     fontSize: 18,
     color: colors.texto,
   },
@@ -288,5 +303,15 @@ const styles = StyleSheet.create({
     color: colors.fundo,
     fontSize: 16,
     fontWeight: "bold",
-  }
+  },
+  infoEntrada: {
+    flex: 1,
+    marginRight: 12,
+  },
+
+  dataCadastro: {
+    fontSize: 12,
+    color: colors.textoSecundario,
+    marginTop: 5,
+  },
 });
