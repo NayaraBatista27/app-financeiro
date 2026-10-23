@@ -28,17 +28,12 @@ Em desenvolvimento.
 
 ## 📱 Capturas de tela
 
-### Tela login
-![Tela inicial](assets/screenshots/captura-de-tela-01.jpeg)
-
-### Início
-![Tela inicial](assets/screenshots/captura-de-tela-02.jpeg)
-
-### Entradas
-![Tela de gráficos](assets/screenshots/captura-de-tela-03.jpeg)
-
-### Despesas
-![Tela de despesas](assets/screenshots/captura-de-tela-04.jpeg)
+<p align="center">
+  <img src="assets/screenshots/captura-de-tela-01.jpeg" width="200" />
+  <img src="assets/screenshots/captura-de-tela-02.jpeg" width="200" />
+  <img src="assets/screenshots/captura-de-tela-03.jpeg" width="200" />
+  <img src="assets/screenshots/captura-de-tela-04.jpeg" width="200" />
+</p>
 
 
 ## 👩‍💻 Desenvolvido por
